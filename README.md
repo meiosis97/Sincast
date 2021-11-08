@@ -7,5 +7,5 @@ This is the very first Sincast version! A R package will be release soon! Here I
 
 The query data can be downloaded at NCBI [GSE133345](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE133345), and the reference data can be downloaded at the [Stemformatic data protal](https://www.stemformatics.org/atlas/myeloid). They are also available at our github page.
 
-Now download [sincast package.R](/sincast package.R) to get strat!
+Now download [sincast package.R](Sincast/sincast package.R) to get strat!
 
