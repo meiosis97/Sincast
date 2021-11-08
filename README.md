@@ -9,3 +9,9 @@ The query data can be downloaded at NCBI [GSE133345](https://www.ncbi.nlm.nih.go
 
 Now download [sincast package.R](https://github.com/meiosis97/Sincast/blob/main/sincast%20package.R) to get started!
 
+# Load functions
+Put [matMult.cpp]() into your R working directory and run
+```r
+source('YOUR_DIR/sincast package.R')
+```
+
