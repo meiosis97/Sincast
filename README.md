@@ -5,7 +5,7 @@ This is the very first Sincast version! A R package will be release soon! Here I
 
 2. Referncce data from [Rajab et al.(2021)](https://doi.org/10.1016/j.stemcr.2021.04.010): **An integrated analysis of human myeloid cells identifies gaps in in vitro models of in vivo biology
 
-The query data can be downloaded at NCBI [GSE133345](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE133345). The reference data can be downloaded at the [Stemformatic data protal](https://www.stemformatics.org/atlas/myeloid)
+The query data can be downloaded at NCBI [GSE133345](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE133345), and the reference data can be downloaded at the [Stemformatic data protal](https://www.stemformatics.org/atlas/myeloid). They are also available at our github page.
 
-as well as our github page
+Now download [Sincast package.R](./Sincast package.R) to get strat!
 
