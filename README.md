@@ -227,7 +227,7 @@ query <- project(reference, query)
 visProjection(reference, query, colReference.by = 'celltype', referenceColors = referenceColors, colQuery.by = 'cluster')
 ```
 
-<img src="./SincastDemo_atlas.project" width="80%" style="display: block; margin: auto;" />
+<img src="./SincastDemo_project.png" width="80%" style="display: block; margin: auto;" />
 
 The interactive 3D plot can be reviewed at [interactive
 3D plot](https://chart-studio.plotly.com/~meiosis/3/#plot)
