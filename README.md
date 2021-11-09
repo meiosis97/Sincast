@@ -77,4 +77,4 @@ show up), and load Sincast functions into your global environment.
 #reference.data <- read.table('stemformatics_atlas_myeloid.1.0.expression_filtered.txt')
 #reference.annotation <- read.delim('stemformatics_atlas_myeloid.1.0.samples.tsv', row.names = 1)
 ```
-![this is a plot](ttps://github.com/meiosis97/Sincast/blob/main/SincastDemo_atlas.png)
+![this is a plot](https://github.com/meiosis97/Sincast/blob/main/SincastDemo_atlas.png)
