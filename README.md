@@ -69,8 +69,6 @@ This will automatically dowload the reuired R packages (a propmt will
 show up), and load Sincast functions into your global environment.
 
 ## Read your data
-!(this is a ploy)[./SincastDemo_atlas.png]
-
 ``` r
 #load the query data
 #query.annotation <- read.table('GSE133345_Annotations_of_all_1231_embryonic_cells_updated_0620.txt')
@@ -79,3 +77,4 @@ show up), and load Sincast functions into your global environment.
 #reference.data <- read.table('stemformatics_atlas_myeloid.1.0.expression_filtered.txt')
 #reference.annotation <- read.delim('stemformatics_atlas_myeloid.1.0.samples.tsv', row.names = 1)
 ```
+!(this is a ploy)[https://github.com/meiosis97/Sincast/blob/main/SincastDemo_atlas.png]
