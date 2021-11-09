@@ -190,7 +190,7 @@ query <- sincastImp(query, col.by = 'cluster')
 
     ## Sparsity after imputation is 0
 
-<img src="Figures/unnamed-chunk-10-1.png" width="80%" style="display: block; margin: auto;" />
+<img src="./SincastDemo_atlas.png" width="80%" style="display: block; margin: auto;" />
 We then perform post-imputation data scaling to prevent over imputation.
 Here, we show the log-gene mean and variance relationship representing
 global gene dispersion trend in the imputed data. Dashed black line
@@ -215,7 +215,7 @@ query <- postScale(query)
 
     ## Done
 
-<img src="Figures/unnamed-chunk-11-1.png" width="80%" style="display: block; margin: auto;" />
+<img src="./SincastDemo_atlas.png" width="80%" style="display: block; margin: auto;" />
 
 ## Projection
 
