@@ -208,10 +208,16 @@ We can super-impose Capybara cell scores on the query projection. Below we show 
 visProjection(reference, query, colReference.by = 'celltype', referenceColors = referenceColors, colQuery.by = 'Cb_macrophage')
 ```
 
-<img src="./figures/SincastDemo_project.png" width="50%" style="display: block; margin: auto;" />
+<img src="./figures/SincastDemo_projectCapybara.png" width="50%" style="display: block; margin: auto;" />
 
 The interactive 3D plot can be reviewed at [interactive
 3D plot](https://chart-studio.plotly.com/~meiosis/5/#/)
+
+Or, we can use heatmap to visualize Capybara cell score predicted on each query cell. Row labels are reference cell types, and each column in the heatmap represent a query cell. The original cell type labels, *cluster*, from the query were annotated to column.
+
+<img src="./figures/SincastDemo_CapybaraHeatmap.png" width="50%" style="display: block; margin: auto;" />
+
+
 
 ## Reference
 Bian Z, Gong Y, Huang T, Lee CZW, Bian L, Bai Z, Shi H, Zeng Y, Liu C, He J, Zhou J, Li X, Li Z, Ni Y, Ma C, Cui L, Zhang R, Chan JKY, Ng LG, Lan Y, Ginhoux F, Liu B. Deciphering human macrophage development at single-cell resolution. Nature. 2020 Jun;582(7813):571-576. doi: 10.1038/s41586-020-2316-7. Epub 2020 May 20. PMID: 32499656.
