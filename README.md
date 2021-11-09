@@ -205,9 +205,13 @@ query <- SincastCapybara(reference, query, clusterid = 'celltype', w = 'HD_mean'
 We can super-impose Capybara cell scores on the query projection. Below we show query cells colored by their *macrophage* identities.
 
 ``` r
-visProjection(reference, query, colReference.by = 'celltype', referenceColors = colors, colQuery.by = 'Cb_macrophage')
+visProjection(reference, query, colReference.by = 'celltype', referenceColors = referenceColors, colQuery.by = 'Cb_macrophage')
 ```
 
+<img src="./figures/SincastDemo_project.png" width="50%" style="display: block; margin: auto;" />
+
+The interactive 3D plot can be reviewed at [interactive
+3D plot](https://chart-studio.plotly.com/~meiosis/5/#/)
 
 ## Reference
 Bian Z, Gong Y, Huang T, Lee CZW, Bian L, Bai Z, Shi H, Zeng Y, Liu C, He J, Zhou J, Li X, Li Z, Ni Y, Ma C, Cui L, Zhang R, Chan JKY, Ng LG, Lan Y, Ginhoux F, Liu B. Deciphering human macrophage development at single-cell resolution. Nature. 2020 Jun;582(7813):571-576. doi: 10.1038/s41586-020-2316-7. Epub 2020 May 20. PMID: 32499656.
