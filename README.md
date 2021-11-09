@@ -181,8 +181,8 @@ query <- postScale(query)
 
 ## Projection
 
-Finally, we project the query on the reference and then visualize the
-projection on the reference atlas.
+We project the query on the reference and then visualize the
+projection on the reference atlas. 
 
 ``` r
 query <- project(reference, query)
@@ -193,6 +193,20 @@ visProjection(reference, query, colReference.by = 'celltype', referenceColors = 
 
 The interactive 3D plot can be reviewed at [interactive
 3D plot](https://chart-studio.plotly.com/~meiosis/3/#plot)
+
+## Capybara prediction
+
+We use improved [Capybara cell score](https://doi.org/10.1101/2020.02.17.947390) to predict query cell identity by referring to the reference data. We benchmark query cells against the reference *celltype* label, and weight the restricted linear regression in Capybara by the mean Helligner Distance to acount for varible power of genes in classifying cell types. 
+
+``` r
+query <- SincastCapybara(reference, query, clusterid = 'celltype', w = 'HD_mean')
+```
+
+We can super-impose Capybara cell scores on the query projection. Below we show query cells colored by their *macrophage* identities.
+
+``` r
+visProjection(reference, query, colReference.by = 'celltype', referenceColors = colors, colQuery.by = 'Cb_macrophage')
+```
 
 
 ## Reference
