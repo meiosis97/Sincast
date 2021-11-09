@@ -146,7 +146,7 @@ Perform PCA on the reference to build the atlas.
 reference <- make.atlas(reference = reference, col.by = 'celltype', colors = referenceColors,vis.atlas = T)
 ```
 
-<img src="./figures/SincastDemo_atlas.png" width="80%" style="display: block; margin: auto;" />
+<img src="./figures/SincastDemo_atlas.png" width="50%" style="display: block; margin: auto;" />
 
 The interactive 3D plot can be reviewed at [interactive
 3D plot](https://chart-studio.plotly.com/~meiosis/1/#plot)
@@ -164,33 +164,7 @@ and hence impute each other in the graph defined by Sincast.
 query <- sincastImp(query, col.by = 'cluster')
 ```
 
-    ## Now perform PCA
-
-    ## Finish PCA
-
-    ## Now construct affinity matrix
-
-    ##   Calcualting distance
-
-    ##   Scaling distance
-
-    ##   Calculating band width
-
-    ##   Laplacian normalization
-
-    ## Finish construct affinity matrix
-
-    ## Now impute
-
-    ## Diffusing
-
-    ## Scaling
-
-    ## Finish impute
-
-    ## Sparsity after imputation is 0
-
-<img src="./figures/SincastDemo_impMap.png" width="80%" style="display: block; margin: auto;" />
+<img src="./figures/SincastDemo_impMap.png" width="50%" style="display: block; margin: auto;" />
 We then perform post-imputation data scaling to prevent over imputation.
 Here, we show the log-gene mean and variance relationship representing
 global gene dispersion trend in the imputed data. Dashed black line
@@ -203,19 +177,7 @@ imputed data according to their trend estimation.
 query <- postScale(query)
 ```
 
-    ## Genewise Mean and Variance estimation on imputed data
-
-    ## Done
-
-    ## Now perform GAM fit.
-
-    ## Finish regress. k is 5
-
-    ## Perform observation wise variance estimation
-
-    ## Done
-
-<img src="./figures/SincastDemo_MeanVar.png" width="80%" style="display: block; margin: auto;" />
+<img src="./figures/SincastDemo_MeanVar.png" width="50%" style="display: block; margin: auto;" />
 
 ## Projection
 
@@ -227,7 +189,7 @@ query <- project(reference, query)
 visProjection(reference, query, colReference.by = 'celltype', referenceColors = referenceColors, colQuery.by = 'cluster')
 ```
 
-<img src="./figures/SincastDemo_project.png" width="80%" style="display: block; margin: auto;" />
+<img src="./figures/SincastDemo_project.png" width="50%" style="display: block; margin: auto;" />
 
 The interactive 3D plot can be reviewed at [interactive
 3D plot](https://chart-studio.plotly.com/~meiosis/3/#plot)
