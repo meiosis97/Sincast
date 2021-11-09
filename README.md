@@ -41,9 +41,9 @@ soon\! Here I will give a very brief introduction to Sincast using the
     human macrophage development at single-cell resolution.**
 
 2.  Reference data from [Rajab et
-    al.(2021)](https://doi.org/10.1016/j.stemcr.2021.04.010): \*\*An
+    al.(2021)](https://doi.org/10.1016/j.stemcr.2021.04.010): **An
     integrated analysis of human myeloid cells identifies gaps in in
-    vitro models of in vivo biology
+    vitro models of in vivo biology**
 
 The query data can be downloaded at NCBI
 [GSE133345](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE133345),
