@@ -1,7 +1,7 @@
 Introduction to Sincast\!
 ================
 Yidi Deng,
-JAN, 11th, 2021
+NOV, 9th, 2021
 
 
 
