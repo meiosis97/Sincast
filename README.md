@@ -69,6 +69,7 @@ This will automatically dowload the reuired R packages (a propmt will
 show up), and load Sincast functions into your global environment.
 
 ## Read your data
+!(this is a ploy)[SincastDemo_atlas.png]
 
 ``` r
 #load the query data
