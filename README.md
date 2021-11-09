@@ -146,7 +146,9 @@ Perform PCA on the reference to build the atlas.
 reference <- make.atlas(reference = reference, col.by = 'celltype', colors = referenceColors,vis.atlas = T)
 ```
 
-**Plot here** The interactive 3D plot can be reviewed at ![interactive
+![SincastDemo_atlas](./SincastDemo_atlas.png)
+
+The interactive 3D plot can be reviewed at [interactive
 3D plot](https://chart-studio.plotly.com/~meiosis/1/#plot)
 
 ## Impute the query data
@@ -225,5 +227,7 @@ query <- project(reference, query)
 visProjection(reference, query, colReference.by = 'celltype', referenceColors = referenceColors, colQuery.by = 'cluster')
 ```
 
-**Plot here** The interactive 3D plot can be reviewed at ![interactive
+![SincastDemo_project](./SincastDemo_project.png)
+
+The interactive 3D plot can be reviewed at [interactive
 3D plot](https://chart-studio.plotly.com/~meiosis/3/#plot)
