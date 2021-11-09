@@ -146,7 +146,7 @@ Perform PCA on the reference to build the atlas.
 reference <- make.atlas(reference = reference, col.by = 'celltype', colors = referenceColors,vis.atlas = T)
 ```
 
-<img src="./SincastDemo_atlas.png" width="80%" style="display: block; margin: auto;" />
+<img src="./figures/SincastDemo_atlas.png" width="80%" style="display: block; margin: auto;" />
 
 The interactive 3D plot can be reviewed at [interactive
 3D plot](https://chart-studio.plotly.com/~meiosis/1/#plot)
@@ -190,7 +190,7 @@ query <- sincastImp(query, col.by = 'cluster')
 
     ## Sparsity after imputation is 0
 
-<img src="./SincastDemo_atlas.png" width="80%" style="display: block; margin: auto;" />
+<img src="./figures/SincastDemo_impMap.png" width="80%" style="display: block; margin: auto;" />
 We then perform post-imputation data scaling to prevent over imputation.
 Here, we show the log-gene mean and variance relationship representing
 global gene dispersion trend in the imputed data. Dashed black line
@@ -215,7 +215,7 @@ query <- postScale(query)
 
     ## Done
 
-<img src="./SincastDemo_atlas.png" width="80%" style="display: block; margin: auto;" />
+<img src="./figures/SincastDemo_MeanVar.png" width="80%" style="display: block; margin: auto;" />
 
 ## Projection
 
@@ -227,7 +227,7 @@ query <- project(reference, query)
 visProjection(reference, query, colReference.by = 'celltype', referenceColors = referenceColors, colQuery.by = 'cluster')
 ```
 
-<img src="./SincastDemo_project.png" width="80%" style="display: block; margin: auto;" />
+<img src="./figures/SincastDemo_project.png" width="80%" style="display: block; margin: auto;" />
 
 The interactive 3D plot can be reviewed at [interactive
 3D plot](https://chart-studio.plotly.com/~meiosis/3/#plot)
