@@ -213,7 +213,7 @@ visProjection(reference, query, colReference.by = 'celltype', referenceColors = 
 The interactive 3D plot can be reviewed at [interactive
 3D plot](https://chart-studio.plotly.com/~meiosis/5/#/)
 
-Or, we can use heatmap to visualize Capybara cell score predicted on each query cell. Row labels are reference cell types, and each column in the heatmap represent a query cell. The original cell type labels, *cluster*, from the query were annotated to column.
+Or, we can use heatmap to visualize Capybara cell score predicted on each query cell. Row labels are reference cell types, and each column in the heatmap represents a query cell. The original cell type labels, *cluster*, from the query were annotated to column.
 
 <img src="./figures/SincastDemo_CapybaraHeatmap.png" width="80%" style="display: block; margin: auto;" />
 
