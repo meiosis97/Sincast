@@ -317,6 +317,10 @@ Aggquery <- project(reference, Aggquery, assay = 'data')
 
 We viasualize the query projection, but found that **DC1**, **DC5** and **DC6**, which are known to be CD141+DC, AS-DC and pDC respectively, can hardly be distinguished on the atlas PCA. The PCA does not give us good indication on the phenotype of these three cluters.
 
+``` r
+visProjection(reference, Aggquery, colReference.by = 'celltype', referenceColors = colors, colQuery.by = 'celltype')
+```
+
 <img src="./figures/SincastDemo_Villaniproject.png" width="50%" style="display: block; margin: auto;" />
 
 The interactive 3D plot can be reviewed at [interactive
@@ -326,11 +330,19 @@ However, we can apply diffusion map to the projection for a better visualization
 relationship. The data coordinates learnt from the atlas PCA were non-linearly reconstructed
 by this second embedding to form new coordinates called diffusion component. After diffusion map,
  **DC1**, **DC5** and **DC6** clusters were clearly separated on the diffusion components. 
-According to the Villani’s study, DC5 (AS-DC) is a DC subtype with
+According to Villani etal, DC5 (AS-DC) is a DC subtype with
 transitional identity altering between DC6 (pDC) and DC2,3 (CD1c+ DC). DC5’s transitional
 identity was wellly captured by the atlas, which shows a clear pDC-cDC trajectory on the diffusion
 components.
 
+``` r
+DiffusionReconstruct(reference, Aggquery,  colReference.by = 'celltype', referenceColors = colors, colQuery.by = 'celltype')
+```
+
+<img src="./figures/SincastDemo_diffuse.png" width="50%" style="display: block; margin: auto;" />
+
+The interactive 3D plot can be reviewed at [interactive
+3D plot](https://chart-studio.plotly.com/~meiosis/11/#/)
 
 
 ## Reference
