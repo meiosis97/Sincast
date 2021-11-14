@@ -243,6 +243,7 @@ protal](https://www.stemformatics.org/atlas/myeloid). They are also
 available at our github page.
 
 ## Read your data
+
 Similar as above, we should also read the Villani query data and meta data, and check whether their dimnames match.
 
 ``` r
@@ -255,6 +256,21 @@ all(colnames(query.data) == rownames(query.annotation))
 
     ## [1] TRUE
 
+
+Convert the query data to SingleCellExperiment (sce) Object. We don't show reference data loading here because it's done exactly the same as before.
+
+``` r
+query <- createSce(counts = query.data, colData = query.annotation)
+```
+
+## Subset the reference data to Monocyte and DC subsets.
+
+This can be done in the same way as the common data frame subsetting in R.
+
+``` r
+reference <- reference[,reference$celltype%in%c('monocyte', 'CD141+ dendritic cell', 'CD1c+ dendritic cell',
+                                   'plasmacytoid dendritic cell', 'dendritic cell')]
+```
 
 
 
