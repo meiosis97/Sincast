@@ -322,7 +322,14 @@ We viasualize the query projection, but found that **DC1**, **DC5** and **DC6**,
 The interactive 3D plot can be reviewed at [interactive
 3D plot](https://chart-studio.plotly.com/~meiosis/9/#/)
 
-However, we can apply diffusion map to 
+However, we can apply diffusion map to the projection for a better visualization of the reference-query
+relationship. The data coordinates learnt from the atlas PCA were non-linearly reconstructed
+by this second embedding to form new coordinates called diffusion component. After diffusion map,
+ **DC1**, **DC5** and **DC6** clusters were clearly separated on the diffusion components. 
+According to the Villani’s study, DC5 (AS-DC) is a DC subtype with
+transitional identity altering between DC6 (pDC) and DC2,3 (CD1c+ DC). DC5’s transitional
+identity was wellly captured by the atlas, which shows a clear pDC-cDC trajectory on the diffusion
+components.
 
 
 
