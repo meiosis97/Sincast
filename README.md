@@ -48,22 +48,20 @@ and the reference data can be downloaded at the [Stemformatic data
 protal](https://www.stemformatics.org/atlas/myeloid). They are also
 available at our github page.
 
-Now download [sincast
-package.R](https://github.com/meiosis97/Sincast/blob/main/sincast%20package.R)
-to get started\!
+Now download Sincast package to get started!
 
-## Load functions
+## Install functions
 
-Put
-[matMult.cpp](https://github.com/meiosis97/Sincast/blob/main/matMult.cpp)
-into your R working directory and run
+Make sure that you have the latest version of devetools and run 
 
 ``` r
-source('sincast package.R')
+devtools::install_github('meiosis97/Sincast@main',subdir = 'pkg')
 ```
 
 This will automatically download the required R packages (a propmt will
-show up), and load Sincast functions into your global environment.
+show up)
+
+Now load Sincast functions into your global environment.
 
 ## Read your data
 
