@@ -242,6 +242,19 @@ and the reference data can be downloaded at the [Stemformatic data
 protal](https://www.stemformatics.org/atlas/myeloid). They are also
 available at our github page.
 
+## Read your data
+Similar as above, we should also read the Villani query data and meta data, and check whether their dimnames match.
+
+``` r
+#load the query data
+query.annotation <- read.table('metadata.txt')
+query.data <- read.table('tpm_expression_matrix.txt')
+all(colnames(query.data) == rownames(query.annotation))
+```
+
+
+    ## [1] TRUE
+
 
 
 
