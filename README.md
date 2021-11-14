@@ -272,6 +272,13 @@ reference <- reference[,reference$celltype%in%c('monocyte', 'CD141+ dendritic ce
                                    'plasmacytoid dendritic cell', 'dendritic cell')]
 ```
 
+and for reference color
+
+``` r
+referenceColors <- c("#081d58","#225ea8","#1d91c0","#253494","#7fcdbb","#c7e9b4","#edf8b1","#41b6c4","#7a0177","#ae017e","#49006a","#dd3497","#5e2f0d","#5e2f0d","#8b4513","#8b4513","#8b4513","#fcc5c0","#fa9fb5","#f768a1","#fdbe85","#fd8d3c","#d94701")
+names(referenceColors) <-  c("kupffer cell","microglia","macrophage","monocyte","CD141+ dendritic cell","CD1c+ dendritic cell","plasmacytoid dendritic cell","dendritic cell","common myeloid progenitor","common lymphoid progenitor","granulocyte monocyte progenitor","hematopoietic multipotent progenitor","neutrophil","granulocyte","myelocyte","metamyelocyte","promyelocyte","erythrocyte","erythroblast","proerythroblast","endothelial progenitor","hemogenic endothelium","hemangioblast")
+referenceColors <- referenceColors[c('monocyte', 'CD141+ dendritic cell', 'CD1c+ dendritic cell', 'plasmacytoid dendritic cell', 'dendritic cell')]
+```
 
 
 
