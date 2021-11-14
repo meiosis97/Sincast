@@ -78,7 +78,7 @@ reference.data <- read.table('RajabRankedExpressionMatrix.txt', check.names = F)
 reference.annotation <- read.table('RajabSampleAnnotation.txt')
 ```
 
-Check whether column names of data matches row names of annotation.
+Both the data matrix and the metadata matrix must be named. The data matrix is gene by cell, and the metadata matrix is cell by variable. Hence we need to first check that column names of data match row names of annotations.
 
 ``` r
 #Reference
@@ -95,17 +95,18 @@ all(colnames(query.data) == rownames(query.annotation))
     ## [1] TRUE
 
 Convert the query and the reference to **SingleCellExperiment (sce)**
-Object.
+Object. 
 
 ``` r
-reference <- createSce(data = reference.data, colData = reference.annotation) 
+reference <- createSce(data = reference.data, colData = reference.annotation, as.sparse = FALSE) 
 query <- createSce(counts = query.data, colData = query.annotation)
 ```
 
 The reference data was [Rank
 transformed](https://doi.org/10.1371/journal.pcbi.1008219) expression,
-so we store it in the *data* slot. The query data is in raw counts so we
-store it in the *counts* slot.
+so we store it in the *data* slot of the sce. Becasue reference bulk data is not sparse, we don't store the data as a sprase matrix to reduce memory usage. 
+The query data is in raw counts so we
+store it in the *counts* slot. We specify data annotation by the *colData* argument.
 
 ## Preprocess your data
 
@@ -115,10 +116,10 @@ First, normalize query library size.
 query <- rcTransform(query)
 ```
 
-Select cell type discriminant genes of the reference.
+Select cell type discriminant genes of the reference. By setting *clusterid* to *celltype*, we tell the algorithm to select genes that are discriminant agasint the atlas annotation *celltype*, which is stored in the *ColData* of the reference (so *celltype* is a variable name in the reference annotation matrix).
 
 ``` r
-reference <- feature.weighting(reference, 'celltype')
+reference <- feature.weighting(reference, clusterid = 'celltype')
 ```
 
 Remove low quality genes and cells in the query. Then, filter both the
@@ -131,7 +132,7 @@ c(reference, query) %<-% filter.data(reference, query)
 
 ## Build the atlas
 
-It’s time to build the atlas. Lets first customize the atlas color for
+It’s time to build a atlas, which is the PCA representation of the reference data. Lets first customize the atlas color for
 better visualization.
 
 ``` r
@@ -157,7 +158,9 @@ embedding learnt by eigen-decomposing the diffusion operator used for
 Sincast data imputation. Cells in the embedding are connected by
 weighted lines (edges) representing affinities. The Sincast diffusion
 embedding gives a rough intuition on how the query cells are connected
-and hence impute each other in the graph defined by Sincast.
+and hence impute each other in the graph defined by Sincast. We use
+*col.by* to indicate that query cells should be colored by their cluster
+annotation.
 
 ``` r
 query <- sincastImp(query, col.by = 'cluster')
@@ -180,8 +183,9 @@ query <- postScale(query)
 
 ## Projection
 
-We project the query on the reference and then visualize the
-projection on the reference atlas. 
+We project the query on the atlas and then visualize the
+projection. *colReference.by* and *colQuery.by*  specify variables in the annotation
+that color samples/cells. *referenceColors* sets the reference color scheme.
 
 ``` r
 query <- project(reference, query)
@@ -195,13 +199,13 @@ The interactive 3D plot can be reviewed at [interactive
 
 ## Capybara prediction
 
-We use improved [Capybara cell score](https://doi.org/10.1101/2020.02.17.947390) to predict query cell identity by referring to the reference data. We benchmark query cells against the reference *celltype* label, and weight the restricted linear regression in Capybara by the mean Helligner Distance to acount for varible power of genes in classifying cell types. 
+We use improved [Capybara cell score](https://doi.org/10.1101/2020.02.17.947390) to predict query cell identity by referring to the reference data. We benchmark query cells against the reference *celltype* label, and weight the restricted linear regression in Capybara by the mean *Helligner Distance* to acount for varible power of genes in classifying cell types. The *HD_mean* variable in the reference annotation is generated before when we ran the *feature.weighting* function.
 
 ``` r
 query <- SincastCapybara(reference, query, clusterid = 'celltype', w = 'HD_mean')
 ```
 
-We can super-impose Capybara cell scores on the query projection. Below we show query cells colored by their *macrophage* identities.
+We can then super-impose continouse vraiable on the query projection, such as gene exxpression and Capybara cell scores. Below we show query cells colored by their *macrophage* identities.
 
 ``` r
 visProjection(reference, query, colReference.by = 'celltype', referenceColors = referenceColors, colQuery.by = 'Cb_macrophage')
@@ -213,6 +217,10 @@ The interactive 3D plot can be reviewed at [interactive
 3D plot](https://chart-studio.plotly.com/~meiosis/5/#/)
 
 Or, we can use heatmap to visualize Capybara cell score predicted on each query cell. Row labels are reference cell types, and each column in the heatmap represents a query cell. The original cell type labels, *cluster*, from the query were annotated to column.
+
+``` r
+CapybaraHeatmap(query)
+```
 
 <img src="./figures/SincastDemo_CapybaraHeatmap.png" width="80%" style="display: block; margin: auto;" />
 
