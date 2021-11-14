@@ -280,6 +280,18 @@ names(referenceColors) <-  c("kupffer cell","microglia","macrophage","monocyte",
 referenceColors <- referenceColors[c('monocyte', 'CD141+ dendritic cell', 'CD1c+ dendritic cell', 'plasmacytoid dendritic cell', 'dendritic cell')]
 ```
 
+Now we are ready for Sincast!
+
+## Subset the reference data to Monocyte and DC subsets.
+
+The procedure is the same as before. So we don't explain it again here.
+
+``` r
+reference <- featureWeighting(reference, clusterid = 'celltype',assay2rank = 'data')
+c(reference, query) %<-% filterData(reference, query)
+reference <- makeAtlas(reference = reference, col.by = 'celltype', colors = referenceColors, vis.atlas = T)
+```
+
 
 
 ## Reference
