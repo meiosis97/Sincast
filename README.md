@@ -292,6 +292,11 @@ c(reference, query) %<-% filterData(reference, query)
 reference <- makeAtlas(reference = reference, col.by = 'celltype', colors = referenceColors, vis.atlas = T)
 ```
 
+<img src="./figures/SincastDemo_subatlas.png" width="50%" style="display: block; margin: auto;" />
+
+The interactive 3D plot can be reviewed at [interactive
+3D plot](https://chart-studio.plotly.com/~meiosis/7/#/)
+
 
 
 ## Reference
