@@ -22,7 +22,7 @@ NOV, 9th, 2021
 
 ## What is Sincast?
 Sincast [Deng et al.(2021)](https://doi.org/10.1101/2021.11.07.467660) is a computational framework to query scRNA-seq data (SIN) by **projecting onto bulk reference atlases** (CAST). Prior to projection, single cell data are transformed to be directly comparable to bulk data, either with pseudo-bulk aggregation or graph-based imputation to address sparse single cell expression profiles. Sincast avoids batch effect correction, and cell identity is predicted along a continuum to highlight new cell states not found in the reference atlas.
-<img src="./figures/introduction.pdf" width="50%" style="display: block; margin: auto;" />
+<img src="./figures/introduction.jpg" width="50%" style="display: block; margin: auto;" />
 
 
 
