@@ -224,6 +224,27 @@ CapybaraHeatmap(query)
 <img src="./figures/SincastDemo_CapybaraHeatmap.png" width="80%" style="display: block; margin: auto;" />
 
 
+# Query Villani etal.(2017) with Sincast
+
+Now lets see how cell aggregation works. To demonstrate, we use 
+
+1.  Query data from [Vinalli et
+    al.(2017)](https://doi/10.1126/science.aah4573): **Single-cell RNA-seq reveals new types of
+    human blood dendritic cells, monocytes, and progenitors**
+
+2.  Monocyte and Dendritic cell subset of reference data from [Rajab et
+    al.(2021)](https://doi.org/10.1016/j.stemcr.2021.04.010): **An
+    integrated analysis of human myeloid cells identifies gaps in in
+    vitro models of in vivo biology**
+
+The query data can be downloaded at [the Broad Institue Single Cell Data Protal](https://singlecell.broadinstitute.org/single_cell/study/SCP43/atlas-of-human-blood-dendritic-cells-and-monocytes),
+and the reference data can be downloaded at the [Stemformatic data
+protal](https://www.stemformatics.org/atlas/myeloid). They are also
+available at our github page.
+
+
+
+
 
 ## Reference
 Bian Z, Gong Y, Huang T, Lee CZW, Bian L, Bai Z, Shi H, Zeng Y, Liu C, He J, Zhou J, Li X, Li Z, Ni Y, Ma C, Cui L, Zhang R, Chan JKY, Ng LG, Lan Y, Ginhoux F, Liu B. Deciphering human macrophage development at single-cell resolution. Nature. 2020 Jun;582(7813):571-576. doi: 10.1038/s41586-020-2316-7. Epub 2020 May 20. PMID: 32499656.
@@ -233,3 +254,6 @@ Rajab N, Angel PW, Deng Y, Gu J, Jameson V, Kurowska-Stolarska M, Milling S, Pac
 Angel PW, Rajab N, Deng Y, Pacheco CM, Chen T, Lê Cao KA, Choi J, Wells CA. A simple, scalable approach to building a cross-platform transcriptome atlas. PLoS Comput Biol. 2020 Sep 28;16(9):e1008219. doi: 10.1371/journal.pcbi.1008219. PMID: 32986694; PMCID: PMC7544119.
 
 Yidi Deng, Jarny Choi, Kim-Anh Le Cao. Sincast: a computational framework to predict cell identities in single cell transcriptomes using bulk atlases as references. bioRxiv 2021.11.07.467660; doi: https://doi.org/10.1101/2021.11.07.467660
+
+Villani AC, Satija R, Reynolds G, Sarkizova S, Shekhar K, Fletcher J, Griesbeck M, Butler A, Zheng S, Lazo S, Jardine L, Dixon D, Stephenson E, Nilsson E, Grundberg I, McDonald D, Filby A, Li W, De Jager PL, Rozenblatt-Rosen O, Lane AA, Haniffa M, Regev A, Hacohen N. Single-cell RNA-seq reveals new types of human blood dendritic cells, monocytes, and progenitors. Science. 2017 Apr 21;356(6335):eaah4573. doi: 10.1126/science.aah4573. PMID: 28428369; PMCID: PMC5775029.
+
