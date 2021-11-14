@@ -313,6 +313,17 @@ Projection need to be modfied a bit. Here we need to tell the function that we a
 Aggquery <- project(reference, Aggquery, assay = 'data')
 ```
 
+## Visualization and Diffusion Reconstruction
+
+We viasualize the query projection, but found that **DC1**, **DC5** and **DC6**, which are known to be CD141+DC, AS-DC and pDC respectively, can hardly be distinguished on the atlas PCA. The PCA does not give us good indication on the phenotype of these three cluters.
+
+<img src="./figures/SincastDemo_Villaniproject.png" width="50%" style="display: block; margin: auto;" />
+
+The interactive 3D plot can be reviewed at [interactive
+3D plot](https://chart-studio.plotly.com/~meiosis/9/#/)
+
+However, we can apply diffusion map to 
+
 
 
 ## Reference
