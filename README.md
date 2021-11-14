@@ -63,6 +63,10 @@ show up)
 
 Now load Sincast functions into your global environment.
 
+``` r
+library(Sincast)
+```
+
 ## Read your data
 
 ``` r
