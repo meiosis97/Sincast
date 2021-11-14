@@ -1,2 +1,4 @@
 ^Sincast\.Rproj$
 ^\.Rproj\.user$
+data*
+figures*
