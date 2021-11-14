@@ -339,7 +339,7 @@ components.
 DiffusionReconstruct(reference, Aggquery,  colReference.by = 'celltype', referenceColors = colors, colQuery.by = 'celltype')
 ```
 
-<img src="./figures/SincastDemo_diffuse.png" width="50%" style="display: block; margin: auto;" />
+<img src="./figures/SincastDemo_diffusion.png" width="50%" style="display: block; margin: auto;" />
 
 The interactive 3D plot can be reviewed at [interactive
 3D plot](https://chart-studio.plotly.com/~meiosis/11/#/)
