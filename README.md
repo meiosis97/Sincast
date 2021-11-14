@@ -1,4 +1,4 @@
-Introduction to Sincast\!
+#Introduction to Sincast\!
 ================
 Yidi Deng,
 NOV, 9th, 2021
@@ -30,8 +30,7 @@ Sincast ([Deng et al. (2021)](https://doi.org/10.1101/2021.11.07.467660)) is a c
 
 # Query Bian etal.(2020) with Sincast
 
-This is the very first Sincast version\! A R package will be release
-soon\! Here I will give a very brief introduction to Sincast using the
+This is the very first Sincast version\! Here I will give a very brief introduction to Sincast using the
 
 1.  Query data from [Bian et
     al.(2020)](https://doi.org/10.1038/s41586-020-2316-7): **Deciphering
