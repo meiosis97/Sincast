@@ -14,7 +14,7 @@ Encoding: UTF-8
 biocViews:
 LazyData: true
 Depends: SingleCellExperiment
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 LinkingTo: 
     Rcpp,RcppEigen
 Imports: 
