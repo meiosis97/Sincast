@@ -23,7 +23,7 @@ postScale(
 
 \item{plotTrend}{Default: TRUE. Whether to plot the genewise mean versus variance trend estimation.}
 
-\item{dologScale}{Default: TRUE. Whether to perform log scaling on the original data matrix (Which should be done if the imputation was performed on the log scaled data)..}
+\item{dologScale}{Default: TRUE. Whether to perform log scaling on the original data matrix (Which should be done if the imputation also performed logscaling)..}
 
 \item{k}{Optional. Basis dimension for GAM.}
 

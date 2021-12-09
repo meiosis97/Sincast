@@ -19,7 +19,7 @@ makeAtlas(
 \arguments{
 \item{reference}{Required. Reference sce.}
 
-\item{npc}{Default: 100. Number of Principle Components to build for the atlas.}
+\item{npc}{Default: 100. Number of Principal Components to build for the atlas.}
 
 \item{scale}{Default: FALSE. Whether to scale the reference features.}
 

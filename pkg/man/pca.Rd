@@ -21,5 +21,5 @@ pca(x, retx = TRUE, center = TRUE, scale. = FALSE, rank = NULL)
 pca object.
 }
 \description{
-Standard principle component analysis
+Standard Principal component analysis
 }

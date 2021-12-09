@@ -23,7 +23,7 @@ SincastCapybara(
 
 \item{k}{Default: 5. Partition each reference cluster into k sub-clusters.}
 
-\item{Npc}{Default: all. How many principle components to use for searching the nearest reference cluster centroid to each query cell.}
+\item{Npc}{Default: all. How many Principal components to use for searching the nearest reference cluster centroid to each query cell.}
 
 \item{w}{Optional. Assign weights to genes in restricted linear regression. Can be either a numerical vector of the same length as the number of genes or be the names of a reference metadata attribute.}
 

@@ -6,7 +6,7 @@
 \usage{
 sincastImp(
   query,
-  logScale = T,
+  dologScale = T,
   assay = "data",
   npc = 50,
   scale = F,
@@ -27,11 +27,11 @@ sincastImp(
 \arguments{
 \item{query}{Required. Query sce.}
 
-\item{logScale}{Default: TRUE. Whether to logscale the query data.}
+\item{dologScale}{Default: TRUE. Whether to log scale the query data.}
 
 \item{assay}{Default: 'data'. On which assay we perform imputation.}
 
-\item{npc}{Default: 50. How many PCs to compute on the query data.}
+\item{npc}{Default: 50. How many Principal components to compute on the query data.}
 
 \item{scale}{Default: FALSE. Whether to Scale the query data for PCA.}
 
