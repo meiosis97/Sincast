@@ -6,7 +6,7 @@
 #' @param preImpAssay Default: 'data'. Which assay in the query sce corresponds to the original data matrix.
 #' @param postImpAssay Default: 'SincastImpData'. Which assay in the query sce corresponds to the imputed data matrix.
 #' @param plotTrend Default: TRUE. Whether to plot the genewise mean versus variance trend estimation.
-#' @param dologScale Default: TRUE. Whether to perform log scaling on the original data matrix (Which should be done if the imputation was performed on the log scaled data)..
+#' @param dologScale Default: TRUE. Whether to perform log scaling on the original data matrix (Which should be done if the imputation also performed logscaling)..
 #' @param k Optional. Basis dimension for GAM.
 #' @param returnObsVarEst Default: FALSE. Whether to return observational variance estimation.
 #' @return Query sce object.

@@ -3,7 +3,7 @@
 #' Perform PCA on the ranked reference data to build atlas.
 #'
 #' @param reference Required. Reference sce.
-#' @param npc Default: 100. Number of Principle Components to build for the atlas.
+#' @param npc Default: 100. Number of Principal Components to build for the atlas.
 #' @param scale Default: FALSE. Whether to scale the reference features.
 #' @param vis.atlas Default: TRUE. Whether to visualize the atlas.
 #' @param col.by Optional. Color reference samples by which metadata attribute.

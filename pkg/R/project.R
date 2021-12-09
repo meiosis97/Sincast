@@ -9,7 +9,7 @@
 #' @return PC scores
 #' @export
 projectDefault <- function(x, load, center = FALSE, scale = FALSE){
-  pcs <- scale(t(x), center = center, scale= scale) %e*% load
+  pcs <- scale(t(x), center = center, scale= scale) %e% load
   colnames(pcs) <- paste('PC', 1:ncol(load), sep = '')
   pcs
 

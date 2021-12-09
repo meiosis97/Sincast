@@ -10,7 +10,7 @@ find.elbow <- function(x, y){
 
 #' PCA
 #'
-#' Standard principle component analysis
+#' Standard Principal component analysis
 #'
 #' @param x Required. data.
 #' @param retx Default: TRUE.
@@ -40,7 +40,7 @@ pca <- function(x, retx = TRUE, center = TRUE, scale. = FALSE, rank = NULL){
   r <- list(sdev = s$d, rotation = s$v[,1:rank],
             center = if(is.null(cen)) FALSE else cen,
             scale = if(is.null(sc)) FALSE else sc)
-  if (retx) r$x <- x %e*% s$v[,1:rank]
+  if (retx) r$x <- x %e% s$v[,1:rank]
   dimnames(r$x) <- list(rownames(x), colnames(s$v)[1:rank])
   totVar <- sum(x^2)/max(1, nrow(x)-1)
   r$Explainedvar <- r$sdev^2/totVar

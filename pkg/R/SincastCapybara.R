@@ -6,7 +6,7 @@
 #' @param query Required. Query sce.
 #' @param clusterid Required. Predict query cell identity based on the reference metadata attribute specified by 'clusterid'.
 #' @param k Default: 5. Partition each reference cluster into k sub-clusters.
-#' @param Npc Default: all. How many principle components to use for searching the nearest reference cluster centroid to each query cell.
+#' @param Npc Default: all. How many Principal components to use for searching the nearest reference cluster centroid to each query cell.
 #' @param w Optional. Assign weights to genes in restricted linear regression. Can be either a numerical vector of the same length as the number of genes or be the names of a reference metadata attribute.
 #' @param colDataPrefix Default: 'Cb_'. Prefix added to the column names of Capybara scores, which will be stored in the ColData of the query sce.
 #' @return Query sce object.

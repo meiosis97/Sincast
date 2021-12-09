@@ -36,7 +36,7 @@ findk <- function(dist, k){
     for(i in 1:100){
       adjTmp <- Matrix::Matrix(as.numeric(distRankMat<= i*0.01*N), nrow = N, ncol = N, sparse = T)
       adjTmp <- adjTmp + t(adjTmp)
-      if(mean((x %e*% adjTmp) == 0) < 0.25) break
+      if(mean((x %e% adjTmp) == 0) < 0.25) break
 
     }
     k <- round(i*0.01*N)
@@ -67,7 +67,7 @@ symmetrization <- function(aff, norm){
     aff <- aff + t(aff) - aff * t(aff)
 
   }else if(norm == 'fuji'){
-    tnorm <- aff %e*% t(aff)
+    tnorm <- aff %e% t(aff)
     x <- rowSums(aff)
     tconorm <- sapply(x, function(z) z+x) - tnorm
     aff <-0.5*(aff+t(aff))*(tnorm/tconorm)
@@ -83,7 +83,7 @@ symmetrization <- function(aff, norm){
 laplacian <- function(aff){
 
   Z <- rowSums(aff)
-  Z.mat <- Z %e*% t(Z)
+  Z.mat <- Z %e% t(Z)
   aff <- aff/Z.mat
 
 }
@@ -95,8 +95,8 @@ medianScale <- function(x,y){
     scale.factor <- median(x[i,cellExpressed])/median(y[i,cellExpressed])
     y[i,] <- y[i,] *scale.factor
   }
+  y[is.na(y)] <- 0
   y
-
 }
 
 
@@ -106,9 +106,9 @@ medianScale <- function(x,y){
 #' Perform Sincast imputation.
 #'
 #' @param query Required. Query sce.
-#' @param logScale Default: TRUE. Whether to logscale the query data.
+#' @param dologScale Default: TRUE. Whether to log scale the query data.
 #' @param assay Default: 'data'. On which assay we perform imputation.
-#' @param npc Default: 50. How many PCs to compute on the query data.
+#' @param npc Default: 50. How many Principal components to compute on the query data.
 #' @param scale Default: FALSE. Whether to Scale the query data for PCA.
 #' @param k Default: 30. k neighborhood to infer adaptive Gaussian kernel.
 #' @param umapdist Default: TRUE. Whether to scale Euclidean distances to distances beyond nearest neighbors as in the UMAP algorithm.
@@ -124,11 +124,11 @@ medianScale <- function(x,y){
 #' @param saveGrpah Default: FALSE. Whether to save the igraph model
 #' @return Query sce object.
 #' @export
-sincastImp <- function(query, logScale = T, assay = 'data', npc = 50, scale = F, k = 30, umapdist = TRUE,
+sincastImp <- function(query, dologScale = T, assay = 'data', npc = 50, scale = F, k = 30, umapdist = TRUE,
                        a = NULL, knn = NULL, doLaplacian = TRUE, norm = 'fuji', t = 3, col.by = NULL,
                        colors = NULL, text = NULL, vis.dc = TRUE, saveGrpah = FALSE){
 
-  if(logScale) x <- Matrix::Matrix(log(assay(query, assay)+1),sparse = T) else x <- assay(query, assay)
+  if(dologScale) x <- Matrix::Matrix(log(assay(query, assay)+1),sparse = T) else x <- assay(query, assay)
   N <- ncol(x); G <- nrow(x)
   out <- list()
 
@@ -163,7 +163,7 @@ sincastImp <- function(query, logScale = T, assay = 'data', npc = 50, scale = F,
   out$p <- out$aff/rowSums(out$aff) #diffusion operator
   assay(query, 'SincastImpData') <- as.matrix(x)
   message('Diffusing')
-  for(i in 1:t) assay(query, 'SincastImpData', withDimnames = F) <- assay(query, 'SincastImpData', withDimnames = F) %e*% out$p
+  for(i in 1:t) assay(query, 'SincastImpData', withDimnames = F) <- assay(query, 'SincastImpData', withDimnames = F) %e% t(out$p)
 
   message('Scaling')
   assay(query, 'SincastImpData') <- medianScale(x, assay(query, 'SincastImpData'))

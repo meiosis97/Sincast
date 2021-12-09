@@ -10,7 +10,7 @@ NULL
 #' @importFrom zeallot `%<-%`
 NULL
 
-#' @importFrom bslib `%>%`
+#' @importFrom plotly `%>%`
 NULL
 
 #' @export `%<-%`

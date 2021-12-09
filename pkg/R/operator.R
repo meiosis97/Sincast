@@ -1,2 +1,2 @@
 #' @export
-`%e*%` <- function(x, y) eigenMapMatMult(x, y)
+`%e%` <- function(x, y) eigenMapMatMult(x, y)
