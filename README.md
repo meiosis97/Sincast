@@ -118,7 +118,7 @@ query <- rcTransform(query)
 Select cell type discriminant genes of the reference. By setting *clusterid* to *celltype*, we tell the algorithm to select genes that are discriminant agasint the atlas annotation *celltype*, which is stored in the *ColData* of the reference (so *celltype* is a variable name in the reference annotation matrix).
 
 ``` r
-reference <- feature.weighting(reference, clusterid = 'celltype')
+reference <- featureWeighting(reference, clusterid = 'celltype')
 ```
 
 Remove low quality genes and cells in the query. Then, filter both the
@@ -126,7 +126,7 @@ query and the reference data to the shared gene set between kept genes
 of the query and cell type discriminant genes of the reference.
 
 ``` r
-c(reference, query) %<-% filter.data(reference, query)
+c(reference, query) %<-% filterData(reference, query)
 ```
 
 ## Build the atlas
@@ -142,7 +142,7 @@ names(referenceColors) <-  c("kupffer cell","microglia","macrophage","monocyte",
 Perform PCA on the reference to build the atlas.
 
 ``` r
-reference <- make.atlas(reference = reference, col.by = 'celltype', colors = referenceColors,vis.atlas = T)
+reference <- makeAtlas(reference = reference, col.by = 'celltype', colors = referenceColors,vis.atlas = T)
 ```
 
 <img src="./figures/SincastDemo_atlas.png" width="50%" style="display: block; margin: auto;" />
