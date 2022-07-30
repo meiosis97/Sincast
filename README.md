@@ -260,7 +260,7 @@ all(colnames(query.data) == rownames(query.annotation))
 Convert the query data to SingleCellExperiment (sce) Object. We don't show reference data loading here because it's done exactly the same as before.
 
 ``` r
-query <- createSce(counts = query.data, colData = query.annotation)
+query <- createSce(data = query.data, colData = query.annotation)
 ```
 
 ## Subset the reference data to Monocyte and DC subsets.
