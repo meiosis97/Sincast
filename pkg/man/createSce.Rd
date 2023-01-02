@@ -7,9 +7,13 @@
 createSce(counts = NULL, data = NULL, colData = NULL, as.sparse = TRUE)
 }
 \arguments{
+\item{counts}{Optional. A gene by cell count matrix.}
+
 \item{data}{Optional. A gene by cell expression matrix (can be normalized count).}
 
-\item{infile}{Optional. A gene by cell count matrix.}
+\item{colData}{Optional. A data frame storing sample metadata. The rownames (cell ids) of colData should match the colnames of counts/data matrix.}
+
+\item{as.sparse}{Default: TRUE. Whether to convert counts/data matrix to sparse matrix format. Should be set to FALSE if matrices are non-sparse (not zero-inflated).}
 }
 \value{
 SingleCellExperiment Object.

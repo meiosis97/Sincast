@@ -89,14 +89,12 @@ laplacian <- function(aff){
 }
 
 
-medianScale <- function(x,y){
-  for(i in 1:nrow(x)){
-    cellExpressed <- x[i,]!=0
-    scale.factor <- median(x[i,cellExpressed])/median(y[i,cellExpressed])
-    y[i,] <- y[i,] *scale.factor
-  }
-  y[is.na(y)] <- 0
-  y
+medianScale <- function(X,Y){
+  scale.factor <- apply(X, 1, function(x) median(x[x!=0]))/
+    apply(replace(Y, X == 0, NA), 1, function(y) median(y, na.rm = T))
+  Y <- Y * scale.factor
+  Y[is.na(Y)] <- 0
+  Y
 }
 
 
@@ -166,7 +164,7 @@ sincastImp <- function(query, dologScale = T, assay = 'data', npc = 50, scale = 
   for(i in 1:t) assay(query, 'SincastImpData', withDimnames = F) <- assay(query, 'SincastImpData', withDimnames = F) %e% t(out$p)
 
   message('Scaling')
-  assay(query, 'SincastImpData') <- medianScale(x, assay(query, 'SincastImpData'))
+  assay(query, 'SincastImpData') <- medianScale(as.matrix(x), assay(query, 'SincastImpData'))
   message('Finish impute')
 
   sparsity <- mean(assay(query, 'SincastImpData')==0)

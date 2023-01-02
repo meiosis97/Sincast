@@ -1,3 +1,13 @@
+medianScale <- function(X,Y){
+  scale.factor <- apply(X, 1, function(x) median(x[x!=0]))/
+    apply(replace(Y, X == 0, NA), 1, function(y) median(y, na.rm = T))
+  Y <- Y * scale.factor
+  Y[is.na(Y)] <- 0
+  Y
+}
+
+
+
 #' Post imputation data scaling.
 #'
 #' Perform Sincast post imputation data scaling.
@@ -22,7 +32,8 @@ postScale <- function(query, preImpAssay = 'data', postImpAssay = 'SincastImpDat
   w <- rowMeans(assay(query, preImpAssay)!=0)
 
   #Scaling by Median
-  x <- medianScale(y, assay(query, postImpAssay))
+  x <- medianScale(as.matrix(y), assay(query, postImpAssay))
+
 
   #gene wise mean and variance estimate on expressed genes
   message('Genewise Mean and Variance estimation on imputed data')
@@ -30,9 +41,14 @@ postScale <- function(query, preImpAssay = 'data', postImpAssay = 'SincastImpDat
   var <- c()
   for(i in 1:G){
     z <- sort(x[i,])
-    lmod <- lm(z[z>0]~q[z>0])
-    mu[i] <- lmod$coefficients[1]
-    var[i] <- lmod$coefficients[2]^2
+    if(sum(z>0)>1){
+      lmod <- lm(z[z>0]~q[z>0])
+      mu[i] <- lmod$coefficients[1]
+      var[i] <- lmod$coefficients[2]^2
+    }else{
+      mu[i] <- NA
+      var[i] <- NA
+    }
   }
   names(mu) <-  names(var) <- names(w) <- rownames(query)
   message('Done')
