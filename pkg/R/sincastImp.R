@@ -1,8 +1,8 @@
 findk <- function(dist, k){
-  distRankMat <- apply(dist, 1, rank)
 
   if(k=='method1'){
     message('now searching for k via binary search')
+    distRankMat <- apply(dist, 1, rank)
 
     upper.k <- N
     lower.k <- 0
@@ -30,6 +30,7 @@ findk <- function(dist, k){
 
   }else if(k == 'method2'){
     message('now searching for k via grid search')
+    distRankMat <- apply(dist, 1, rank)
 
     cur.k <- 0.01*N
 
@@ -98,6 +99,29 @@ medianScale <- function(X,Y){
 }
 
 
+find_sigma <- function(dk, a, k){
+  lower <- 0
+  upper <- Inf
+  cur <- dk[k]
+  while(T){
+    psum <- sum(exp(-0.5*(dk/cur)^2))
+    if(psum > a){
+      upper <- cur
+      cur <- (lower + cur)/2
+    }else if(psum < a){
+      if(is.infinite(upper)){
+        lower <- cur
+        cur <- 2 * cur
+      }else{
+        lower <- cur
+        cur <- (upper + cur)/2
+      }
+    }
+    if(abs(psum-a) < 1e-5) break
+  }
+  cur
+}
+
 
 #' Sincast imputation
 #'
@@ -110,10 +134,12 @@ medianScale <- function(X,Y){
 #' @param scale Default: FALSE. Whether to Scale the query data for PCA.
 #' @param k Default: 30. k neighborhood to infer adaptive Gaussian kernel.
 #' @param umapdist Default: TRUE. Whether to scale Euclidean distances to distances beyond nearest neighbors as in the UMAP algorithm.
-#' @param a Default: log(k/(k-1)). They probability of a cell communicating with its kth nearest neighbor.
+#' @param a Default: log2(k) and log(k/(k-1)) when setting umapdist to TRUE and FALSE respectively.
+#'        a < 1 represents the probability of a cell communicating with its kth nearest neighbor.
+#'        a > 1 represents the sum of probabilities of a cell communicating with its k nearest neighbors.
 #' @param knn Default: k. A cell can only be connected to knn neighbors when t is set 1.
 #' @param doLaplacian Default: TRUE. Whether to perform Laplacian normalization on the affinity matrix.
-#' @param norm Default: 'fuji'. How to symmetrize the affinity matrix. Default is Fuzzy Jaccard index. The other option is 'probabilistic' (Probabilistic t-norm).
+#' @param norm Default: 'probabilistic'. How to symmetrize the affinity matrix. Default is Probabilistic t-norm. The other option is 'fuji' (Fuzzy Jaccard index).
 #' @param t Default: 3. Diffusion time. The power of Markov transition matrix.
 #' @param col.by Optional. Color query cells by which metadata attribute.
 #' @param colors Optional. Color Scheme of col.by. Should be a named vector using color codes as values and labels of 'col.by' as names.
@@ -123,7 +149,7 @@ medianScale <- function(X,Y){
 #' @return Query sce object.
 #' @export
 sincastImp <- function(query, dologScale = T, assay = 'data', npc = 50, scale = F, k = 30, umapdist = TRUE,
-                       a = NULL, knn = NULL, doLaplacian = TRUE, norm = 'fuji', t = 3, col.by = NULL,
+                       a = NULL, knn = NULL, doLaplacian = TRUE, norm = 'probabilistic', t = 3, col.by = NULL,
                        colors = NULL, text = NULL, vis.dc = TRUE, saveGrpah = FALSE){
 
   if(dologScale) x <- Matrix::Matrix(log(assay(query, assay)+1),sparse = T) else x <- assay(query, assay)
@@ -138,7 +164,9 @@ sincastImp <- function(query, dologScale = T, assay = 'data', npc = 50, scale = 
   message('\t Calcualting distance')
   out$dist <- pdist(r$x)
   k <- findk(out$dist, k) #kappa
-  if(is.null(a)) a <- log(k/(k-1)) #probability
+  if(is.null(a)){
+    if(umapdist) a <- log2(k) else a <- log(k/(k-1)) # probability
+  }
   if(is.null(knn)) knn <- k #maximum neighborhood size
 
   message('\t Scaling distance')
@@ -146,7 +174,16 @@ sincastImp <- function(query, dologScale = T, assay = 'data', npc = 50, scale = 
 
   message('\t Calculating band width')
   out$sigma <- c()
-  for(i in 1:N) out$sigma[i] <- sort(out$dist[i,], partial = k)[k]/ sqrt(-2*log(a))
+  for(i in 1:N){
+    dk <- sort(out$dist[i,])[2:(k+1)]
+    if(a < 1){
+      out$sigma[i] <- dk[k]/sqrt(-2*log(a))
+    }else if(a > 1){
+      out$sigma[i] <- find_sigma(dk, a, k)
+    }else{
+      out$sigma[i] <- Inf
+    }
+  }
   names(out$sigma) <- colnames(query)
 
   out$aff <- exp(-0.5*(out$dist/out$sigma)^2)

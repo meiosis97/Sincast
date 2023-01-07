@@ -15,7 +15,7 @@ sincastImp(
   a = NULL,
   knn = NULL,
   doLaplacian = TRUE,
-  norm = "fuji",
+  norm = "probabilistic",
   t = 3,
   col.by = NULL,
   colors = NULL,
@@ -39,13 +39,15 @@ sincastImp(
 
 \item{umapdist}{Default: TRUE. Whether to scale Euclidean distances to distances beyond nearest neighbors as in the UMAP algorithm.}
 
-\item{a}{Default: log(k/(k-1)). They probability of a cell communicating with its kth nearest neighbor.}
+\item{a}{Default: log2(k) and log(k/(k-1)) when setting umapdist to TRUE and FALSE respectively.
+a < 1 represents the probability of a cell communicating with its kth nearest neighbor.
+a > 1 represents the sum of probabilities of a cell communicating with its k nearest neighbors.}
 
 \item{knn}{Default: k. A cell can only be connected to knn neighbors when t is set 1.}
 
 \item{doLaplacian}{Default: TRUE. Whether to perform Laplacian normalization on the affinity matrix.}
 
-\item{norm}{Default: 'fuji'. How to symmetrize the affinity matrix. Default is Fuzzy Jaccard index. The other option is 'probabilistic' (Probabilistic t-norm).}
+\item{norm}{Default: 'probabilistic'. How to symmetrize the affinity matrix. Default is Probabilistic t-norm. The other option is 'fuji' (Fuzzy Jaccard index).}
 
 \item{t}{Default: 3. Diffusion time. The power of Markov transition matrix.}
 
