@@ -18,4 +18,4 @@ RoxygenNote: 7.1.2
 LinkingTo: 
     Rcpp,RcppEigen
 Imports: 
-    Rcpp,RcppEigen,zeallot,plotly,Matrix,RSpectra,dplyr,igraph,mgcv,RColorBrewer,ggplot2,quadprog,cluster,RANN,pheatmap,plyr,viridis
+    Rcpp,RcppEigen,zeallot,plotly,Matrix,RSpectra,dplyr,igraph,mgcv,RColorBrewer,ggplot2,quadprog,cluster,RANN,pheatmap,plyr,viridis,rsvd

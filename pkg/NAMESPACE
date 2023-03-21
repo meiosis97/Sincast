@@ -3,6 +3,7 @@
 export("%e%")
 export(CapybaraHeatmap)
 export(DiffusionReconstruct)
+export(FastSincastImp)
 export(HellingerDist)
 export(SincastCapybara)
 export(`%<-%`)

@@ -6,11 +6,11 @@
 #' @param clusterid Required. The query Coldata attribute name. Cells will be aggregated within the clusters of 'clusterid'.
 #' @param assay Default: 'counts'. On which assay of the query we perform aggregation.
 #' @param size.factor Default: 1. Determine how many pseudo-bulk samples to be generated from each cluster. The number equals to "size.factor times cluster size".
-#' @param pool.factor Default: 1  Determine how many cells to be pooled for aggregation in each cluster. The number equals to "pool.factor times cluster size"
-#' @param nPool Optional. Pooling size of each pseudo-bulk sample. Will suppress pool.factor if specified.
+#' @param pool.factor Default: 1.  Determine how many cells to be pooled for aggregation in each cluster. The number equals to "pool.factor times cluster size"
+#' @param nPool Default: NULL. Pooling size of each pseudo-bulk sample. Will suppress pool.factor if specified.
 #' @return A confusion matrix if trueAnno has been provided.
 #' @export
-aggregate <- function(query, clusterid, assay = 'counts', size.factor =1, pool.factor = 1, nPool = NULL){
+aggregate <- function(query, clusterid, assay = 'counts', size.factor =1, pool.factor = 1, nPool = 15){
 
   cluster <- colData(query)[,clusterid]
   cluname <- sort(unique(cluster))

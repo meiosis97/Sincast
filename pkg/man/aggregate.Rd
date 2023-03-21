@@ -10,7 +10,7 @@ aggregate(
   assay = "counts",
   size.factor = 1,
   pool.factor = 1,
-  nPool = NULL
+  nPool = 15
 )
 }
 \arguments{
@@ -22,9 +22,9 @@ aggregate(
 
 \item{size.factor}{Default: 1. Determine how many pseudo-bulk samples to be generated from each cluster. The number equals to "size.factor times cluster size".}
 
-\item{pool.factor}{Default: 1  Determine how many cells to be pooled for aggregation in each cluster. The number equals to "pool.factor times cluster size"}
+\item{pool.factor}{Default: 1.  Determine how many cells to be pooled for aggregation in each cluster. The number equals to "pool.factor times cluster size"}
 
-\item{nPool}{Optional. Pooling size of each pseudo-bulk sample. Will suppress pool.factor if specified.}
+\item{nPool}{Default: NULL. Pooling size of each pseudo-bulk sample. Will suppress pool.factor if specified.}
 }
 \value{
 A confusion matrix if trueAnno has been provided.

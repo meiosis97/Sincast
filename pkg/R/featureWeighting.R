@@ -19,8 +19,8 @@ featureWeighting <- function(reference, clusterid, cut = T, n.cut = 2000, assay2
   cluname <- sort(unique(cluster))
   n.cluster <- length(cluname)
 
-  #remove genes with less than n.clusters expressed
-  reference <- reference[apply(assay(reference, assay2rank),1,function(x) length(unique(x)))>=n.cluster,]
+  #remove unexpressed gene
+  reference <- reference[rowSums(assay(reference, assay2rank)!=0)>1,]
 
   n.sample <- ncol(reference)
   n.gene <- nrow(reference)
@@ -28,10 +28,10 @@ featureWeighting <- function(reference, clusterid, cut = T, n.cut = 2000, assay2
   #create rank assay
   reference <- rankTrans(reference, assay2rank)
 
-
   #discreteize reference data
   discRankDat <- apply(assay(reference, 'rank'), 1,
-                       function(x) as.factor(kmeans(x, centers = n.cluster, iter.max = 100)$cluster))
+                       function(x) as.factor(kmeans(x, centers = min(length(unique(x)), n.cluster),
+                                                    iter.max = 100)$cluster))
   #calculate HD
   HD <- data.frame(t(apply(discRankDat,2,function(y) HellingerDist(cluster,y))))
   #generate metadata

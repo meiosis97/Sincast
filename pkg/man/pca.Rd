@@ -4,7 +4,7 @@
 \alias{pca}
 \title{PCA}
 \usage{
-pca(x, retx = TRUE, center = TRUE, scale. = FALSE, rank = NULL)
+pca(x, retx = TRUE, center = TRUE, scale. = FALSE, rank = NULL, doRpca = FALSE)
 }
 \arguments{
 \item{x}{Required. data.}
